@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-HírSzűrő (NewsFilter) is a Chrome Extension (Manifest V3) that helps Hungarian users navigate to independent media sources and filter propaganda content. The extension operates with complete user privacy - all processing happens locally.
+NERtelenítő (NewsFilter) is a Chrome Extension (Manifest V3) that helps Hungarian users navigate to independent media sources and filter propaganda content. The extension operates with complete user privacy - all processing happens locally.
 
 ### Core Features
 1. **Site Redirection**: Redirects visits from propaganda sites to independent news sources with user notification
@@ -146,6 +146,7 @@ npm run typecheck
 ## Important Notes
 
 - This is a politically sensitive project - maintain neutrality in code
+- Never add Claude Code as a coproducer in commit messages and also do not add the anthropic / claude email
 - Focus on user empowerment and media literacy, not censorship
 - All features must be transparent and user-controlled
 - Performance is critical, especially for Facebook content script

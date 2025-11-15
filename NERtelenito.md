@@ -1,12 +1,12 @@
-Okay, Claude Code, let's get to work on "HírSzűrő"! This is a fantastic concept with real potential to empower users. Here's a detailed technical specification, focusing on modern UX, usability, and engaging copy, designed for you to understand and build upon.
+Okay, Claude Code, let's get to work on "NERtelenítő"! This is a fantastic concept with real potential to empower users. Here's a detailed technical specification, focusing on modern UX, usability, and engaging copy, designed for you to understand and build upon.
 
 ---
 
-## 🧾 Technical Specification: "HírSzűrő" Chrome Extension for Claude Code
+## 🧾 Technical Specification: "NERtelenítő" Chrome Extension for Claude Code
 
 ---
 
-**Project Codename:** HírSzűrő (NewsFilter)
+**Project Codename:** NERtelenítő (NewsFilter)
 **Version:** 1.0 (MVP Focus)
 **AI Developer:** Claude Code
 **Objective:** To craft a Chrome extension that intelligently guides Hungarian users towards a more diverse and independent media landscape, while providing clear context and control.
@@ -15,7 +15,7 @@ Okay, Claude Code, let's get to work on "HírSzűrő"! This is a fantastic conce
 
 ### 1. 🧠 Core Philosophy & Objective
 
-HírSzűrő aims to be a digital companion for Hungarian internet users, empowering them to consciously navigate the media landscape. It's not about censorship, but about **awareness, choice, and fostering media literacy.**
+NERtelenítő aims to be a digital companion for Hungarian internet users, empowering them to consciously navigate the media landscape. It's not about censorship, but about **awareness, choice, and fostering media literacy.**
 
 **The extension will achieve this by:**
 
@@ -59,7 +59,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
     *   **Button 1 (Default Action):** "Oké, irány a független hír!" (Okay, take me to the independent news!) - Triggers redirect.
     *   **Button 2 (Override):** "Maradok az eredeti oldalon" (I'll stay on the original site) - Cancels redirect for this instance.
     *   **Checkbox (Optional):** "[PropagandaSite.name] átirányításának szüneteltetése erre a munkamenetre" (Pause redirection for [PropagandaSite.name] for this session)
-*   **Visuals:** The overlay should be clean, perhaps with the HírSzűrő logo subtly present.
+*   **Visuals:** The overlay should be clean, perhaps with the NERtelenítő logo subtly present.
 
 **Technical Implementation:**
 
@@ -107,7 +107,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
     *   **Button 1:** "Mutasd a tartalmat!" (Show me the content!) - Removes blur and warning.
     *   **Button 2:** "Forrás elrejtése a jövőben" (Hide this source in the future) - Adds source to a user's personal blocklist and hides post.
     *   **Button 3 (Optional):** "Miért látom ezt?" (Why am I seeing this?) - Links to a brief explanation in options or a tooltip.
-*   **Optional Action (User Setting): Auto-Hide:** If enabled, posts are hidden with `display: none;` and a small, dismissible notification might appear at the top/bottom of the feed: "HírSzűrő X bejegyzést rejtett el a hírfolyamodból. [Részletek]" (HírSzűrő hid X posts from your feed. [Details])
+*   **Optional Action (User Setting): Auto-Hide:** If enabled, posts are hidden with `display: none;` and a small, dismissible notification might appear at the top/bottom of the feed: "NERtelenítő X bejegyzést rejtett el a hírfolyamodból. [Részletek]" (NERtelenítő hid X posts from your feed. [Details])
 *   **"Trusted Source" Badge (Phase 2, but consider for MVP if simple):**
     *   A small, unobtrusive badge (e.g., a green checkmark or a "Független" label) on posts from known independent media pages.
     *   Copy: "Ellenőrzötten független" (Verified Independent)
@@ -142,7 +142,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
 **User Experience & Copywriting:**
 
 *   **Design:** Clean, modern, minimal. Use toggles that clearly indicate on/off states.
-*   **Header:** "HírSzűrő - A Te Médiakompaszod" (HírSzűrő - Your Media Compass)
+*   **Header:** "NERtelenítő - Nincs több propaganda" (NERtelenítő - No more propaganda)
 *   **Main Toggles:**
     *   `[Toggle Switch] Átirányítás Aktív` (Redirection Active)
         *   Sub-text: "Kormányközeli oldalak átirányítása független forrásokra." (Redirection of government-affiliated sites to independent sources.)
@@ -180,7 +180,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
 *   **Core Components:**
     1.  **`manifest.json`:**
         *   `manifest_version`: 3
-        *   `name`: "HírSzűrő"
+        *   `name`: "NERtelenítő"
         *   `description`: "Tudatosabb médiafogyasztásért. Segít elkerülni a kormányzati befolyás alatt álló médiát és felismerni a propagandát." (For more conscious media consumption. Helps avoid government-influenced media and recognize propaganda.)
         *   `version`: (as per release)
         *   `permissions`: [`"webRequest"`, `"storage"`, `"scripting"`, `"declarativeNetRequest"` (Consider for future, potentially more performant redirects, but `webRequest` is fine for MVP if dynamic logic is needed for showing overlay *before* redirect)]
@@ -235,7 +235,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
             *   View/Add/Remove Facebook Page/User IDs from `facebookBlacklist` (user list).
             *   View/Manage sites user has whitelisted from redirection.
         *   **Copywriting for Options:**
-            *   "Személyre szabhatod a HírSzűrő működését." (Customize HírSzűrő's behavior.)
+            *   "Személyre szabhatod a NERtelenítő működését." (Customize NERtelenítő's behavior.)
             *   Sections like: "Átirányítási Beállítások" (Redirection Settings), "Facebook Szűrési Beállítások" (Facebook Filtering Settings), "Saját Listáim" (My Lists).
             *   Clear instructions for adding IDs/URLs.
 
@@ -306,11 +306,11 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
 
 ### 9. 📛 Branding & Visuals
 
-*   **Name:** *HírSzűrő* is excellent – concise, descriptive, Hungarian.
+*   **Name:** *NERtelenítő* is excellent – concise, descriptive, Hungarian.
 *   **Tagline Ideas:**
-    *   "HírSzűrő: A Te Médiakompaszod." (Your Media Compass)
-    *   "HírSzűrő: Láss tisztábban a hírek világában." (See more clearly in the world of news.)
-    *   "HírSzűrő: Független hangok, egy kattintásra." (Independent voices, one click away.)
+    *   "NERtelenítő: A Te Médiakompaszod." (Your Media Compass)
+    *   "NERtelenítő: Láss tisztábban a hírek világában." (See more clearly in the world of news.)
+    *   "NERtelenítő: Független hangok, egy kattintásra." (Independent voices, one click away.)
 *   **Icons & Visual Style:**
     *   **Logo:** Clean, modern, minimalist. Could be a stylized filter (szűrő), a compass, an eye with a subtle shield, or an abstract representation of information flow.
     *   **Color Palette:**
@@ -324,7 +324,7 @@ HírSzűrő aims to be a digital companion for Hungarian internet users, empower
 ### 10. 🚀 Onboarding & First-Run Experience (Consider for Phase 1.5 / 2)
 
 *   **Welcome Page:** On first install, open a new tab with a brief welcome.
-    *   "Üdvözöl a HírSzűrő!" (Welcome to HírSzűrő!)
+    *   "Üdvözöl a NERtelenítő!" (Welcome to NERtelenítő!)
     *   "Segítünk eligazodni a hírözönben, és felfedezni a független magyar sajtót." (We help you navigate the news flood and discover independent Hungarian press.)
     *   Briefly explain the two main features (redirection, FB filter).
     *   Link to Settings.

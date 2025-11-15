@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas16" width="16" height="16"></canvas>
+    <canvas id="canvas32" width="32" height="32"></canvas>
+    <canvas id="canvas48" width="48" height="48"></canvas>
+    <canvas id="canvas128" width="128" height="128"></canvas>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Set up scaling
+            const scale = size / 48;
+            ctx.scale(scale, scale);
+            
+            // Draw filter icon
+            ctx.fillStyle = '#14B8A6';
+            
+            // Filter funnel shape
+            ctx.beginPath();
+            ctx.moveTo(8, 8);
+            ctx.lineTo(40, 8);
+            ctx.lineTo(32, 20);
+            ctx.lineTo(28, 20);
+            ctx.lineTo(28, 35);
+            ctx.lineTo(20, 35);
+            ctx.lineTo(20, 20);
+            ctx.lineTo(16, 20);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Add circle for media/news representation
+            ctx.fillStyle = '#0f9d8a';
+            ctx.beginPath();
+            ctx.arc(24, 40, 6, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        // Draw icons for all sizes
+        drawIcon(document.getElementById('canvas16'), 16);
+        drawIcon(document.getElementById('canvas32'), 32);
+        drawIcon(document.getElementById('canvas48'), 48);
+        drawIcon(document.getElementById('canvas128'), 128);
+
+        // Function to download canvas as PNG
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Auto-download all icons after a short delay
+        setTimeout(() => {
+            downloadCanvas(document.getElementById('canvas16'), 'icon16.png');
+            setTimeout(() => downloadCanvas(document.getElementById('canvas32'), 'icon32.png'), 100);
+            setTimeout(() => downloadCanvas(document.getElementById('canvas48'), 'icon48.png'), 200);
+            setTimeout(() => downloadCanvas(document.getElementById('canvas128'), 'icon128.png'), 300);
+        }, 1000);
+    </script>
+</body>
+</html>

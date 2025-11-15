@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NERtelenítő - Beállítások</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="../icons/icon48.png" alt="NERtelenítő" class="logo">
+      <div>
+        <h1>NERtelenítő Beállítások</h1>
+        <p>Személyre szabhatod a NERtelenítő működését.</p>
+      </div>
+    </header>
+    
+    <main>
+      <section class="settings-section">
+        <h2>Átirányítási Beállítások</h2>
+        <div class="setting-group">
+          <label class="setting">
+            <div class="setting-info">
+              <h3>Átirányítás engedélyezése</h3>
+              <p>Kormányközeli oldalak automatikus átirányítása független forrásokra</p>
+            </div>
+            <input type="checkbox" id="redirect-enabled" checked>
+          </label>
+        </div>
+      </section>
+      
+      <section class="settings-section">
+        <h2>Facebook Szűrési Beállítások</h2>
+        <div class="setting-group">
+          <label class="setting">
+            <div class="setting-info">
+              <h3>Facebook szűrés engedélyezése</h3>
+              <p>Propagandaforrások szűrése a Facebook hírfolyamban</p>
+            </div>
+            <input type="checkbox" id="facebook-enabled" checked>
+          </label>
+          
+          <div class="setting radio-group">
+            <h3>Szűrés módja</h3>
+            <label class="radio-option">
+              <input type="radio" name="facebook-action" value="blurAndWarn" checked>
+              <span>Elmosás és figyelmeztetés</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="facebook-action" value="autoHide">
+              <span>Automatikus elrejtés</span>
+            </label>
+          </div>
+        </div>
+      </section>
+      
+      <section class="settings-section">
+        <h2>Saját Listáim</h2>
+        
+        <div class="list-section">
+          <h3>Propaganda oldalak</h3>
+          <p class="list-description">Ezeket az oldalakat átirányítjuk független forrásokra</p>
+          <div class="list-container">
+            <div id="propaganda-sites-list" class="site-list"></div>
+            <div class="add-item">
+              <input type="text" id="add-propaganda-site" placeholder="pl. example.hu">
+              <button id="add-propaganda-btn">Hozzáadás</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="list-section">
+          <h3>Független oldalak</h3>
+          <p class="list-description">Ezekre az oldalakra irányítunk át</p>
+          <div class="list-container">
+            <div id="independent-sites-list" class="site-list"></div>
+            <div class="add-item">
+              <input type="text" id="add-independent-site" placeholder="pl. https://example.hu">
+              <button id="add-independent-btn">Hozzáadás</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="list-section">
+          <h3>Facebook szűrőlista</h3>
+          <p class="list-description">Ezeket a Facebook oldalakat/személyeket szűrjük</p>
+          <div class="list-container">
+            <div id="facebook-blacklist" class="site-list"></div>
+            <div class="add-item">
+              <input type="text" id="add-facebook-source" placeholder="Oldal/személy neve">
+              <button id="add-facebook-btn">Hozzáadás</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="list-section">
+          <h3>Fehérlistázott oldalak</h3>
+          <p class="list-description">Ezeket az oldalakat nem irányítjuk át</p>
+          <div class="list-container">
+            <div id="whitelisted-sites" class="site-list"></div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="settings-section">
+        <h2>Műveletek</h2>
+        <div class="actions">
+          <button id="reset-settings" class="button button-secondary">
+            Alapértelmezett beállítások visszaállítása
+          </button>
+          <button id="export-settings" class="button button-secondary">
+            Beállítások exportálása
+          </button>
+          <button id="import-settings" class="button button-secondary">
+            Beállítások importálása
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

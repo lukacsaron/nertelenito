@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NERtelenítő</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header>
+      <img src="../icons/icon48.png" alt="NERtelenítő" class="logo">
+      <div>
+        <h1>NERtelenítő</h1>
+        <p class="tagline">No more propaganda</p>
+      </div>
+    </header>
+    
+    <main>
+      <div class="toggle-section">
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <h3>Átirányítás aktív</h3>
+            <p>Kormányközeli oldalak átirányítása független forrásokra.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="redirect-toggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="toggle-item">
+          <div class="toggle-info">
+            <h3>Facebook tisztítás aktív</h3>
+            <p>Propagandatartalmak szűrése a hírfolyamban.</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="facebook-toggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="stats-section">
+        <h3>Mai statisztika</h3>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">Ma átirányítva:</span>
+            <span class="stat-value" id="redirect-count">0</span>
+            <span class="stat-unit">oldal</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Ma kiszűrve Facebookon:</span>
+            <span class="stat-value" id="facebook-count">0</span>
+            <span class="stat-unit">bejegyzés</span>
+          </div>
+        </div>
+        <div class="last-action" id="last-action" style="display: none;">
+          <span class="action-label">Legutóbbi művelet:</span>
+          <span class="action-value" id="last-action-text"></span>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <button id="settings-btn" class="button button-primary">
+          Beállítások és listák szerkesztése
+        </button>
+        
+        <div class="links">
+          <a href="mailto:feedback@hirszuro.hu" class="link">Visszajelzés küldése</a>
+          <a href="#" id="how-it-works" class="link">Hogyan működik?</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

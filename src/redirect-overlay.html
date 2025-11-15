@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NERtelenítő - Átirányítás</title>
+  <link rel="stylesheet" href="redirect-overlay.css">
+</head>
+<body>
+  <div class="overlay-container">
+    <div class="overlay-content">
+      <div class="logo">
+        <img src="icons/icon128.png" alt="NERtelenítő" width="64" height="64">
+      </div>
+      
+      <h1>Pillanat! Egy lépéssel a tudatos médiafogyasztás felé.</h1>
+      
+      <p class="main-text">
+        Az általad keresett oldal (<strong id="from-site"></strong>) gyakran egyoldalú tájékoztatást nyújt. 
+        Átirányítunk egy független forrásra: <strong id="to-site"></strong>.
+      </p>
+      
+      <div class="button-container">
+        <button id="proceed-btn" class="button button-primary">
+          Oké, irány a független hír!
+        </button>
+        
+        <button id="stay-btn" class="button button-secondary">
+          Maradok az eredeti oldalon
+        </button>
+      </div>
+      
+      <div class="checkbox-container">
+        <label>
+          <input type="checkbox" id="whitelist-checkbox">
+          <span id="whitelist-text"></span> átirányításának szüneteltetése erre a munkamenetre
+        </label>
+      </div>
+      
+      <div class="countdown">
+        Automatikus átirányítás <span id="countdown">3</span> másodperc múlva...
+      </div>
+    </div>
+  </div>
+  
+  <script src="redirect-overlay.js"></script>
+</body>
+</html>

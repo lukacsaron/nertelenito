@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "NERtelenítő",
+  "description": "Tudatosabb médiafogyasztásért. Segít elkerülni a kormányzati befolyás alatt álló médiát és felismerni a propagandát.",
+  "version": "1.0.0",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.origo.hu/*",
+    "*://*.888.hu/*",
+    "*://*.ripost.hu/*",
+    "*://*.pestisracok.hu/*",
+    "*://*.vadhajtasok.hu/*",
+    "*://*.kuruc.info/*",
+    "*://*.mandiner.hu/*",
+    "*://*.magyarnemzet.hu/*",
+    "*://*.hirado.hu/*",
+    "*://*.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["contentFacebook.js"],
+      "css": ["contentFacebook.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["redirect-overlay.html", "redirect-overlay.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

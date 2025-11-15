@@ -1,0 +1,343 @@
+/* Blur effect for filtered posts */
+.hirszuro-blurred > *:not(.hirszuro-overlay) {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Enhanced warning overlay */
+.hirszuro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(2px);
+  border-radius: 8px;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hirszuro-warning {
+  text-align: center;
+  padding: 24px;
+  max-width: 400px;
+}
+
+.hirszuro-warning h3 {
+  color: #14B8A6;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hirszuro-warning p {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.hirszuro-warning strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.hirszuro-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.hirszuro-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 200px;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.hirszuro-btn:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.hirszuro-btn-show {
+  background: #14B8A6;
+  color: white;
+}
+
+.hirszuro-btn-show:hover {
+  background: #0f9d8a;
+}
+
+.hirszuro-btn-hide {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.hirszuro-btn-hide:hover {
+  background: #fde68a;
+}
+
+.hirszuro-btn-why {
+  font-size: 12px;
+  background: transparent;
+  color: #6b7280;
+  text-decoration: underline;
+  min-width: auto;
+  padding: 4px 8px;
+}
+
+.hirszuro-btn-why:hover {
+  color: #14B8A6;
+  background: transparent;
+  transform: none;
+}
+
+/* Enhanced trust badge */
+.hirszuro-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 1px solid #34d399;
+  border-radius: 16px;
+  font-size: 11px;
+  color: #065f46;
+  font-weight: 600;
+  text-shadow: 0 0.5px 1px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: help;
+}
+
+.hirszuro-badge:hover {
+  background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);
+  transform: translateY(-0.5px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.hirszuro-badge span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* Ensure overlay works with Facebook's layout */
+[role="article"] {
+  position: relative;
+}
+
+/* Animation for showing overlay */
+.hirszuro-overlay {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hidden posts notification */
+.hirszuro-hidden-notification {
+  position: sticky;
+  top: 60px;
+  z-index: 1000;
+  margin: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+  cursor: pointer;
+  animation: slideDown 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.hirszuro-notification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hirszuro-notification-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.hirszuro-notification-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #92400e;
+}
+
+.hirszuro-notification-toggle {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #d97706;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #92400e;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hirszuro-notification-toggle:hover {
+  background: white;
+  transform: translateY(-1px);
+}
+
+.hirszuro-notification-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f59e0b;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.hirszuro-notification-details.visible {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.hirszuro-notification-details p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #78350f;
+}
+
+.hirszuro-show-hidden {
+  padding: 6px 14px;
+  background: #d97706;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hirszuro-show-hidden:hover {
+  background: #b45309;
+  transform: translateY(-1px);
+}
+
+/* Accessibility info */
+.hirszuro-accessibility-info {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.hirszuro-accessibility-info:hover {
+  opacity: 1;
+}
+
+/* Temporarily shown posts highlighting */
+.hirszuro-temporarily-shown {
+  border: 2px solid #fbbf24 !important;
+  border-radius: 8px !important;
+  background: rgba(251, 191, 36, 0.05) !important;
+  animation: highlightPulse 2s ease-in-out;
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    border-color: #fbbf24;
+    background: rgba(251, 191, 36, 0.05);
+  }
+  50% {
+    border-color: #f59e0b;
+    background: rgba(251, 191, 36, 0.1);
+  }
+}
+
+/* Enhanced overlay interactions */
+.hirszuro-overlay:focus-within {
+  outline: 2px solid #14B8A6;
+  outline-offset: 2px;
+}
+
+.hirszuro-btn:focus {
+  outline: 2px solid #14B8A6;
+  outline-offset: 2px;
+}
+
+/* Improved responsiveness */
+@media (max-width: 768px) {
+  .hirszuro-warning {
+    padding: 16px;
+    max-width: 90vw;
+  }
+  
+  .hirszuro-buttons {
+    gap: 6px;
+  }
+  
+  .hirszuro-btn {
+    padding: 10px 16px;
+    font-size: 15px;
+    min-width: 180px;
+  }
+  
+  .hirszuro-hidden-notification {
+    margin: 5px;
+    padding: 10px 12px;
+  }
+  
+  .hirszuro-notification-text {
+    font-size: 13px;
+  }
+  
+  .hirszuro-accessibility-info {
+    bottom: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+}
