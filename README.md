@@ -1,109 +1,88 @@
-# NERtelenítő - Chrome Extension
+# NERtelenítő
 
-> Tudatos médiafogyasztásért. Segít elkerülni a kormányzati befolyás alatt álló médiát és felismerni a propagandát.
+Chrome-bővítmény, amely átirányít a kormányközeli hírportálokról független forrásokra, és megjelöli a propagandaposztokat a Facebook-hírfolyamban.
 
-A NERtelenítő egy Chrome bővítmény, amely segít a magyar felhasználóknak navigálni a média világában és ösztönzi a független sajtó fogyasztását.
+> *A Chrome extension for Hungarian readers: it redirects away from state-aligned news sites to independent outlets, and flags propaganda posts in the Facebook feed. Everything runs locally, nothing is collected.*
 
-## ✨ Funkciók
+## Miért
 
-### 🔄 Intelligens Átirányítás
-- Automatikusan felismeri a kormányközeli propaganda oldalakat
-- Átirányítja a felhasználót független hírforrásokra
-- Előzetes értesítés lehetőséggel a visszamondásra
-- Testreszabható fehérlista
+A magyar médiapiac nagyobbik fele kormányzati befolyás alatt áll, és ez a hírfolyamban nem látszik. Egy megosztott cikknél nem derül ki, hogy ki a tulajdonos és mi a szerkesztőségi érdek. Aki nem követi napi szinten a tulajdonosi köröket, annak ez láthatatlan.
 
-### 📘 Facebook Hírfolyam Szűrés
-- Felismeri a propaganda bejegyzéseket a Facebook hírfolyamban
-- Elmossa vagy elrejti a problémás tartalmakat
-- Zöld ✓ jellel jelöli meg a független forrásokat
-- Teljes felhasználói kontroll
+A NERtelenítő nem cenzúráz. Kontextust ad, és felajánl egy alternatívát. Minden lépés megkerülhető, a listák szerkeszthetők, és a bővítmény elmondja, miért csinálja, amit csinál.
 
-### ⚙️ Testreszabható Beállítások
-- Saját oldalak hozzáadása a listákhoz
-- Export/import funkció
-- Részletes statisztikák
-- Átlátható működés
+## Mit csinál
 
-## 🚀 Telepítés
+### Átirányítás
 
-### Fejlesztői Telepítés
-1. Klónozd le a repot: `git clone https://github.com/vegevankicsi/nertelenito.git`
-2. Telepítsd a függőségeket: `npm install`
-3. Építsd le a bővítményt: `npm run build`
-4. Nyisd meg a Chrome-ot és navigálj a `chrome://extensions/` oldalra
-5. Engedélyezd a "Developer mode"-ot
-6. Kattints a "Load unpacked"-ra és válaszd ki a `dist` mappát
+Ha kormányközeli portálra navigálsz, előbb kapsz egy 2-3 másodperces overlayt, csak utána történik meg az átirányítás:
 
-### Éles Telepítés
-*(Hamarosan elérhető a Chrome Web Store-ban)*
+> **Pillanat! Egy lépéssel a tudatos médiafogyasztás felé.**
+> Az általad keresett oldal gyakran egyoldalú tájékoztatást nyújt. Átirányítunk egy független forrásra.
+> `[Oké, irány a független hír!]` `[Maradok az eredeti oldalon]`
 
-## 🛠️ Fejlesztés
+Az overlay a lényeg. Egy azonnali átugrás manipuláció lenne, egy magyarázattal együtt felkínált választás nem az. Kikapcsolható munkamenetre, oldalra vagy globálisan.
 
-### Előfeltételek
-- Node.js 16+
-- Chrome böngésző
+A 13 alapértelmezett forrás (Origo, 888, Ripost, Pesti Srácok, Vadhajtások, Magyar Nemzet, Híradó és társaik) helyett tíz független oldal közül választ véletlenszerűen: Telex, 444, HVG, Népszava, Mérce, Átlátszó, Direkt36, Szabad Európa és mások.
 
-### Parancsok
+### Facebook-szűrés
+
+A hírfolyamban a content script felismeri a listás forrásokból származó posztokat, és elmossa vagy elrejti őket, a beállítás szerint. A független forrásokat zöld pipával jelöli. A blacklist kormányzati politikusok és kommunikátorok oldalait tartalmazza, mindegyiknél egy `reason` mezővel, ami megmondja, miért került a listára.
+
+### Beállítások
+
+Saját oldalak hozzáadása mindkét listához, export és import, statisztika arról, hányszor lépett működésbe.
+
+## Adatvédelem
+
+Nincs szerverhívás, nincs analitika, nincs adatgyűjtés. A listák és a beállítások a `chrome.storage.local`-ban maradnak, a gépeden. A bővítmény `host_permissions` értéke pontosan a listás domainekre és a facebook.com-ra szól, semmi másra.
+
+## Telepítés
+
+Nincs fent a Chrome Web Store-ban. Fejlesztői módban:
+
 ```bash
-npm run build      # Éles build
-npm run dev        # Fejlesztői build watch módban
-npm run lint       # TypeScript linting
-npm run typecheck  # Type ellenőrzés
-npm run format     # Kód formázás
+npm install
+npm run build
 ```
 
-### Projekt Struktúra
+Ezután `chrome://extensions/` → Fejlesztői mód bekapcsol → „Kicsomagolt bővítmény betöltése" → válaszd a `dist` mappát.
+
+## Fejlesztés
+
+```bash
+npm run dev        # webpack watch módban
+npm run typecheck  # tsc --noEmit
+npm run lint
+npm run format
+```
+
+## Felépítés
+
 ```
 src/
-├── background/     # Service worker (átirányítás)
-├── content/        # Content scriptek (Facebook szűrés)
-├── popup/          # Popup UI
-├── options/        # Beállítások oldal
-├── common/         # Közös típusok és funkciók
-└── manifest.json   # Extension manifest
+  background/        service worker, declarativeNetRequest szabályok
+  content/           Facebook content script + stílusok
+  popup/             gyors kapcsolók
+  options/           listakezelés, export/import, statisztika
+  common/
+    defaultLists.ts  a három alapértelmezett lista
+    storage.ts       chrome.storage wrapper
+  redirect-overlay.*  az átirányítás előtti overlay
+  manifest.json      Manifest V3
 ```
 
-## 🔒 Adatvédelem
+TypeScript, webpack, nulla futásidejű függőség.
 
-A NERtelenítő **teljes mértékben helyi** működésű:
-- Nincsenek külső szerver hívások
-- Nem gyűjt személyes adatokat
-- Nem követi a böngészési szokásokat
-- Minden adat a felhasználó gépén marad
+A `NERtelenito.md` tartalmazza az eredeti specifikációt, beleértve a hangnemre és a copyra vonatkozó döntéseket. A `TESTING.md` a kézi tesztforgatókönyveket.
 
-## 📝 Licenc
+## Állapot
 
-MIT License - lásd [LICENSE](LICENSE) fájl
+MVP. Az átirányítás és a Facebook-szűrés működik, a Web Store-os publikálás nem történt meg. A listák 2025 novemberi állapotot tükröznek, és kézi karbantartást igényelnek.
 
-## 🤝 Közreműködés
+## Listákról
 
-Szívesen fogadunk:
-- Hibajelentéseket
-- Funkciójavaslatokat  
-- Pull requesteket
-- Visszajelzéseket
+A listák szerkesztői döntések, nem mérések. A tulajdonosi és szerkesztőségi viszonyok változnak, és egy hardcode-olt lista elavul. Ezért szerkeszthető mindegyik a beállításokban, és ezért látszik minden bejegyzésnél, hogy miért került oda. Ha nem értesz egyet egy besorolással, vedd ki.
 
-## 📞 Kapcsolat
+## Licenc
 
-- Email: feedback@hirszuro.hu
-- Issues: [GitHub Issues](https://github.com/vegevankicsi/nertelenito/issues)
-
-## 📊 Állapot
-
-- ✅ **MVP Kész**: Alapfunkciók implementálva
-- ✅ **Build System**: Webpack + TypeScript
-- ✅ **UI/UX**: Modern, magyar nyelvű interface
-- 🔄 **Tesztelés**: Folyamatban
-- 📋 **Web Store**: Tervezés alatt
-
-## 🎯 Roadmap
-
-- [ ] Chrome Web Store publikálás
-- [ ] Firefox támogatás  
-- [ ] Fejlett témaalapú átirányítás
-- [ ] Felhasználói visszajelzés rendszer
-- [ ] Automatikus lista frissítések
-
----
-
-*Készítve ❤️-tel a tudatos médiafogyasztásért*
+MIT.
